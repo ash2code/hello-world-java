@@ -6,14 +6,16 @@ pipeline {
     }
 
     stages {
-        stage('Hello') {
+        stage('git-checkout') {
             steps {
-                echo 'Hello World'
+                script {
+                    git 'https://github.com/ash2code/hello-world-java.git/'
+                }
             }
         }
         stage('mvn-build') {
             steps {
-                script{
+                script {
                     sh "mvn clean install"
                 }
             }
